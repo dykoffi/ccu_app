@@ -45,7 +45,7 @@ const Head = () => {
                 l'opérateur de votre correspondant.
                 </p>
                 <p>Plus d'info sur <a href="https://www.artci.ci/index.php/foire-aux-questions/470-nouveau-plan-de-national-de-numeroration.html" target="_blank" rel="noopener noreferrer">artci</a></p>
-                <p><b>CCU</b> met à votre dispositon des outils qui vous permettent de facilement mettre à jour tous vos contacts et ainsi vous adapter au changement sans effort.</p>
+                <p><b>CCU</b> met à votre dispositon des outils qui vous permettront de facilement mettre à jour tous vos contacts et ainsi vous adapter rapidement et sans effort au changement.</p>
             </div>
             
         </div >

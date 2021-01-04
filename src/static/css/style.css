@@ -16,14 +16,14 @@ p{
     margin-top: 1cm;
 }
 li{
-    line-height: 1.2cm;
+    line-height: 1cm;
 }
-#partenaires > img{
+#zen > img, #partenaires img{
     opacity: 0.8;
-    filter: grayscale(80%);
+    filter: grayscale(65%);
     transition: all 0.4s;
 }
-#partenaires > img:hover{
+#zen > img:hover, #partenaires img:hover{
     filter: grayscale(0%);
     transform: scale(1.03);
 

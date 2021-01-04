@@ -42,6 +42,7 @@
     "eject": "react-scripts eject",
     "go": "react-scripts start"
   },
+  "homepage": "./build",
   "eslintConfig": {
     "extends": "react-app"
   },

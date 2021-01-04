@@ -9,14 +9,11 @@ import './static/css/style.css'
 import './static/css/animate.css'
 import { CookiesProvider } from 'react-cookie';
 import App from './Apps'
-import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
     <CookiesProvider>
         <Provider store={store}>
-            <Router>
-                <App />
-            </Router>
+            <App />
         </Provider>
     </CookiesProvider>,
     document.getElementById('root')

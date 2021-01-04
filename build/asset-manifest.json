@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ac785057.chunk.css",
+    "main.js": "/static/js/main.7618daef.chunk.js",
+    "main.js.map": "/static/js/main.7618daef.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7afd2527.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7afd2527.js.map",
+    "static/js/2.f769d71d.chunk.js": "/static/js/2.f769d71d.chunk.js",
+    "static/js/2.f769d71d.chunk.js.map": "/static/js/2.f769d71d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.95fe9501be6755bf72c590c15c85b665.js": "/precache-manifest.95fe9501be6755bf72c590c15c85b665.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.ac785057.chunk.css.map": "/static/css/main.ac785057.chunk.css.map",
+    "static/js/2.f769d71d.chunk.js.LICENSE.txt": "/static/js/2.f769d71d.chunk.js.LICENSE.txt",
+    "static/media/icones.css": "/static/media/Material-Design-Iconsd41d.2f198897.eot",
+    "static/media/artci.png": "/static/media/artci.e0c4e6d5.png",
+    "static/media/cid.png": "/static/media/cid.d29b4492.png",
+    "static/media/fjn.jpeg": "/static/media/fjn.bce5a7da.jpeg",
+    "static/media/lastic.jpeg": "/static/media/lastic.88ac51a3.jpeg",
+    "static/media/moov.png": "/static/media/moov.ebc78c7f.png",
+    "static/media/mtn.png": "/static/media/mtn.b0c6f606.png",
+    "static/media/npm2.png": "/static/media/npm2.e607d4eb.png",
+    "static/media/orange.png": "/static/media/orange.5d45f5c6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7afd2527.js",
+    "static/js/2.f769d71d.chunk.js",
+    "static/css/main.ac785057.chunk.css",
+    "static/js/main.7618daef.chunk.js"
+  ]
+}
