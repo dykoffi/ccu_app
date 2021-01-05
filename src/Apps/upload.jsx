@@ -50,7 +50,7 @@ const App = ({ email, setMail, setLoading }) => {
                 </Button>
             </div>
             <div className="row d-flex">
-                <small>Vous pouvez nous écrire au pour la prise en charge des fichiers spécifiques à votre entreprise.</small>
+                <small>Vous pouvez nous écrire (par mail : koffiedy@gmail.com) pour la prise en charge des fichiers spécifiques à votre entreprise.</small>
             </div>
         </div>
 
