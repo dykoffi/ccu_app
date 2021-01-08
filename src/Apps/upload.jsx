@@ -31,21 +31,20 @@ const App = ({ email, setMail, setLoading }) => {
     return (
         <div className="row d-flex flex-column">
             <div>
-                <Button title={!email && "configurez d'abord le compte mail"} disabled={!email} {...getRootProps()} className="bg-light mt-4" startIcon={<CloudUploadIcon />} variant="contained" size="large">Importez votre fichier (.csv, .vcf, .zip)
+                <Button title={!email && "configurez d'abord le compte mail"} disabled={!email} {...getRootProps()} className="bg-light mt-4" startIcon={<CloudUploadIcon />} variant="contained" size="large">Importez vos fichiers (.csv, .vcf, .zip)
             <input
                         {...getInputProps()}
                         className="col-12"
                         accept=".csv, .vcf, .zip"
                         type="file"
                         name='fichier'
-                        multiple
                         onChange={({ target: { files } }) => {
-                            const data = new FormData()
-                            for (let i = 0; i < files.length; i++) {
-                                data.append('fichier', files[i]);
-                            }
-                            sendFiles(data)
-                        }}
+                        const data = new FormData()
+                        for (let i = 0; i < files.length; i++) {
+                            data.append('fichier', files[i]);
+                        }
+                        sendFiles(data)
+                    }}
                     />
                 </Button>
             </div>
