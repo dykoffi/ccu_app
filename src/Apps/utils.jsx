@@ -11,11 +11,11 @@ const Waiting = () =>
     <div className="col-12">
         <div>
             <b className="text-success display-4 font-weight-bold">
-                Prenez vos précautions : Exportez et Sauvegardez vos données avant toute manipulation
+                Prenez vos précautions : Exportez et Sauvegardez vos données avant toute manipulation.
         </b>
         </div>
         <ol id="utils">
-            <li> <h2><i className="mdi-hardware-phone-android mr-3"></i> l'Application mobile </h2>
+            {/* <li> <h2><i className="mdi-hardware-phone-android mr-3"></i> l'Application mobile </h2>
                 <p>
                     Modifiez directement et automatiquement vos contacts à l'aide de l'application ZEN
                 </p>
@@ -30,15 +30,16 @@ const Waiting = () =>
                         <img className="mb-3" height={500} src={z4} alt="" />
                     </div>
                 </ol>
-            </li>
+            </li>*/}
             <li> <h2><i className="mdi-action-language mr-3"></i> l'Import de fichiers en ligne </h2>
                 <p>
-                    Actualisez le contenu de tous vos documents (<code>.vcf, .csv, .zip</code>) qui contiennent des numeros ivoiriens. Les fichiers ZIP doivent contenir des fichiers <code>.vcf</code> ou <code>.csv</code> (les autres formats ne sont pas pris en charge).
+                    Actualisez le contenu de tous vos documents (<code>.vcf, .csv, .zip</code>) qui contiennent des numeros ivoiriens. Les fichiers ZIP doivent contenir des fichiers <code>.vcf</code> ou <code>.csv</code> (les autres formats ne seront pas traités).
                 </p>
                 <ol>
-                    <li>Renseignez votre adresse mail pour la reception des liens</li>
-                    <li>Importez le fichier à partir du button ci-dessous</li>
-                    <li>Téléchargez la version actualisée du fichier à partir du lien reçu sur votre mail. Le fichier est automatiquement supprimé après 4min.</li>
+                    <li>Renseignez votre adresse mail pour la reception des fichiers</li>
+                    <Modal />
+                    <li>Importez le fichier à partir du boutton ci-dessous</li>
+                    <li>Téléchargez la version actualisée du fichier reçu sur votre mail et actualisez votre système.</li>
                     <li>Les fichiers <code>.csv</code> devront respecter le formatage suivant :
                         <ul>
                             <li>séparateur <code>;</code> ou <code>,</code></li>
@@ -48,7 +49,6 @@ const Waiting = () =>
                     </li>
                     <Upload />
                 </ol>
-                <Modal />
                 <b className="text-danger">(Cette méthode nécessite la suppression des contacts existants afin d'éviter les doublons)</b>
             </li>
             <li> <h2><i className="mdi-action-polymer mr-3"></i> l'Outil CLI (ligne de commande LINUX/MAC/WINDOWS) </h2>
@@ -58,7 +58,7 @@ const Waiting = () =>
                 <ol>
                     <li>Téléchargez l'outil CLI à l'aide du gestionnaire de packages npm (<code>npm install -g ccu-cli</code>)</li>
                     <li>Entrez la commande <code>ccu-cli --help</code> ou rendez-vous sur <a href="https://www.npmjs.com/package/ccu-cli" target="_blank" rel="noopener noreferrer">npm</a> pour plus de details</li>
-                    <li>Prise en charge des base de données <code>Postgres, Mysql ,Sql Server, Sqlite, MongoDB</code></li>
+                    <li>Prise en charge des base de données <code>Postgres, Mysql ,Sql Server, Sqlite, MongoDB</code> (dans la prochaine version)</li>
                 </ol>
                 <b className="text-danger">(Cette méthode nécessite l'installation préalable de node js)</b>
             </li>

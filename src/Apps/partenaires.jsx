@@ -31,30 +31,30 @@ const App = () => {
             </div> */}
             <h1 className="lead text-center mt-5">Coordonnées</h1>
             <div className="row d-flex justify-content-around pt-5" id="partenaires">
-                <div className="row col-auto d-flex flex-column align-items-center">
+                {/* <div className="row col-auto d-flex flex-column align-items-center">
                     <img className="mb-3" height={50} src={linkedin} alt="" />
                     <a href="https://www.linkedin.com/in/edy-koffi-948494192/" target="_blank" rel="noopener noreferrer">Edy koffi</a> 
-                </div>
+                </div> */}
                 <div className="row col-auto d-flex flex-column align-items-center">
                     <img className="mb-3" height={50} src={gmail} alt="" />
-                    <a href="mailto:koffiedy@gmail.com ">nodytic@gmail.com </a> 
+                    <a href="mailto:nodytic@gmail.com ">nodytic@gmail.com </a> 
                 </div>
-                <div className="row col-auto d-flex flex-column align-items-center">
+                {/* <div className="row col-auto d-flex flex-column align-items-center">
                     <img className="mb-3" height={50} src={github} alt="" />
                     dykoffi
                 </div>
                 <div className="row col-auto d-flex flex-column align-items-center">
                     <img className="mb-3" height={50} src={npm} alt="" />
                     dykoffi
-                </div>
+                </div> */}
                 <div className="row col-auto d-flex flex-column align-items-center">
                     <img className="mb-3" height={50} src={phone} alt="" />
                     +225 51 88 64 78 / +225 55 85 46 85 
                 </div>
-                <div className="row col-auto d-flex flex-column align-items-center">
+                {/* <div className="row col-auto d-flex flex-column align-items-center">
                     <img className="mb-3" height={50} src={location} alt="" />
                     Abidjan / Marcory
-                </div>
+                </div> */}
             </div>
 
             {/* <h1 className="lead text-center pt-5">Contributeurs</h1>

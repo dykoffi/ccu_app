@@ -21,7 +21,7 @@ const App = ({ email, setMail, setLoading }) => {
                 setpercent(percentCompleted)
             },
             method: 'POST',
-            url: `${header.url}/upload/`,
+            url: `${header.url}/upload/${btoa(email)}`,
             data: files,
             headers: { "content-type": "multipart/form-data", "x-filename": files }
         }).then((data) => {
@@ -31,7 +31,7 @@ const App = ({ email, setMail, setLoading }) => {
     return (
         <div className="row d-flex flex-column">
             <div>
-                <Button title={!email && "configurez d'abord le compte mail"} disabled={!email} {...getRootProps()} className="bg-light mt-4" startIcon={<CloudUploadIcon />} variant="contained" size="large">Importer votre fichier (.csv, .vcf, .zip)
+                <Button title={!email && "configurez d'abord le compte mail"} disabled={!email} {...getRootProps()} className="bg-light mt-4" startIcon={<CloudUploadIcon />} variant="contained" size="large">Importez votre fichier (.csv, .vcf, .zip)
             <input
                         {...getInputProps()}
                         className="col-12"
@@ -50,7 +50,7 @@ const App = ({ email, setMail, setLoading }) => {
                 </Button>
             </div>
             <div className="row d-flex">
-                <small>Vous pouvez nous écrire (par mail : koffiedy@gmail.com) pour la prise en charge des fichiers spécifiques à votre entreprise.</small>
+                <small>Écrivez nous (par mail : nodytic@gmail.com) pour la prise en charge des fichiers spécifiques à votre entreprise.</small>
             </div>
         </div>
 
