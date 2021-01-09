@@ -13,6 +13,7 @@ deploy:
     user: psante
     host:
       - 160.120.185.111
+    port : 2226
     repo: https://github.com/dykoffi/ccu_app.git
     ref: origin/master
     path: /home/psante/Apps/test/ccu/app
