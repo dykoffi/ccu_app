@@ -1,0 +1,20 @@
+apps:
+  - name: Sfile_App
+    script: serve
+    instances: 1
+    exec_mode: cluster
+    env:
+      PM2_SERVE_PATH: ./build
+      PM2_SERVE_PORT: 3001
+      PM2_SERVE_SPA: true
+      NODE_ENV: production
+deploy:
+  production:
+    user: psante
+    host: 
+      - 160.120.185.111
+    repo: cid@192.168.1.63:/home/cid/Depots/Edy/sfile/app
+    ref: origin/master
+    path: /home/psante/Apps/test/ccu/app
+    post-deploy: yarn install ; yarn build ; pm2 startOrReload build.yaml ; pm2 save
+

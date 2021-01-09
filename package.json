@@ -2,6 +2,7 @@
   "name": "ccu_app",
   "version": "0.1.1",
   "private": true,
+  "repository": {"url": ""},
   "description": "Site de présentation des solution ccu",
   "author": {
     "email": "koffiedy@gmail.com",

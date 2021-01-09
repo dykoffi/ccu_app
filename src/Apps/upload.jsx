@@ -5,16 +5,16 @@ import { useDropzone } from 'react-dropzone';
 import Axios from 'axios';
 import { header } from './apiQuery';
 import { connect } from 'react-redux'
-import { setMail, setLoading } from './redux'
+import { setMail, setLoading, setInformation } from './redux'
 
-const App = ({ email, setMail, setLoading }) => {
+const App = ({ email, info, setInformation }) => {
     const { getRootProps, getInputProps } = useDropzone()
-    const [listFile, setlistFile] = useState([])
     const [loading, setloading] = useState(false)
     const [percent, setpercent] = useState(null)
 
     function sendFiles(files) {
         setloading(true)
+        setInformation("Envoi en cours ...")
         Axios({
             onUploadProgress: function (progressEvent) {
                 let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
@@ -24,14 +24,17 @@ const App = ({ email, setMail, setLoading }) => {
             url: `${header.url}/upload/${btoa(email)}`,
             data: files,
             headers: { "content-type": "multipart/form-data", "x-filename": files }
-        }).then((data) => {
-            console.log("fichiers envoyés");
+        }).then(({ data }) => {
+            setInformation(data)
+            setTimeout(() => {
+                setInformation("")
+            }, 2500);
         })
     }
     return (
         <div className="row d-flex flex-column">
-            <div>
-                <Button title={!email && "configurez d'abord le compte mail"} disabled={!email} {...getRootProps()} className="bg-light mt-4" startIcon={<CloudUploadIcon />} variant="contained" size="large">Importez vos fichiers (.csv, .vcf, .zip)
+            <div className="d-flex align-items-center mt-4">
+                <Button disabled={!email} {...getRootProps()} className="bg-light" startIcon={<CloudUploadIcon />} variant="contained" size="large">Importez vos fichiers (.csv, .vcf, .zip)
             <input
                         {...getInputProps()}
                         className="col-12"
@@ -39,17 +42,18 @@ const App = ({ email, setMail, setLoading }) => {
                         type="file"
                         name='fichier'
                         onChange={({ target: { files } }) => {
-                        const data = new FormData()
-                        for (let i = 0; i < files.length; i++) {
-                            data.append('fichier', files[i]);
-                        }
-                        sendFiles(data)
-                    }}
+                            const data = new FormData()
+                            for (let i = 0; i < files.length; i++) {
+                                data.append('fichier', files[i]);
+                            }
+                            sendFiles(data)
+                        }}
                     />
                 </Button>
+                <span className="ml-3 text-success font-weight-bold">{info}</span>
             </div>
             <div className="row d-flex">
-                <small>Écrivez nous (par mail : nodytic@gmail.com) pour la prise en charge des fichiers spécifiques à votre entreprise.</small>
+                <small>Écrivez nous (par mail : <a href="mailto:nodytic@gmail.com">nodytic@gmail.com</a> ) pour la prise en charge des fichiers spécifiques à votre entreprise.</small>
             </div>
         </div>
 
@@ -57,11 +61,11 @@ const App = ({ email, setMail, setLoading }) => {
 }
 
 const mapStateToProps = (state) => {
-    const { indexReducer: { email, loading } } = state
-    return { email, loading }
+    const { indexReducer: { email, loading, info } } = state
+    return { email, loading, info }
 }
 
 // const mapDispatchToProps = () => ({ setLoading, setMail })
 
-const AppConnected = connect(mapStateToProps, { setLoading, setMail })(App)
+const AppConnected = connect(mapStateToProps, { setLoading, setMail, setInformation })(App)
 export default AppConnected;

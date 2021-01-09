@@ -10,7 +10,6 @@ import { Cookies } from 'react-cookie'
 import { Avatar, Chip } from '@material-ui/core';
 import { connect } from 'react-redux'
 import { setMail, setLoading } from './redux'
-import { setMinutes } from 'date-fns';
 
 const Modal = ({ setMail, setLoading, email, loading }) => {
     const cookies = new Cookies()
@@ -45,8 +44,8 @@ const Modal = ({ setMail, setLoading, email, loading }) => {
         <div className="col-12">
 
             {
-                email ? <small><Chip className="bg-light" avatar={<Avatar>{email[0]}</Avatar>} label={email} onClick={() => setOpen(true)} /> confguré pour recevoir les liens</small> : <small>
-                    <Chip className="bg-light" label={"Configuré un mail"} onClick={() => setOpen(true)} /> pour recevoir le lien des fichiers traités
+                email ? <small><Chip className="bg-light" avatar={<Avatar>{email[0]}</Avatar>} label={email} onClick={() => setOpen(true)} /> confguré pour recevoir les fichiers</small> : <small>
+                    <Chip className="bg-light" label={"Configuré un mail"} onClick={() => setOpen(true)} /> pour recevoir vos fichiers actualiés
                 </small>
             }
 
@@ -55,7 +54,7 @@ const Modal = ({ setMail, setLoading, email, loading }) => {
                 onClose={handleClose}
                 disableBackdropClick
                 aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title"><h1>Confidentialité</h1></DialogTitle>
+                <DialogTitle id="form-dialog-title"><span className="display-4 font-weight-bold">Confidentialité</span></DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Parce que votre sécurité compte pour nous, veuillez renseignez votre mail afin de recevoir en toute confidentialité les liens de vos fichiers traités
@@ -82,7 +81,7 @@ const Modal = ({ setMail, setLoading, email, loading }) => {
                         }} >Supprimer</Button>
                     }
 
-                    <Button disabled={!(/^[a-z0-9]+@[a-z]+\.(fr|com|ci|yahoo|co)$/.test(inputMail))} onClick={validerEmail} className="bg-light">Valider</Button>
+                    <Button disabled={!(/^[a-z0-9]+@[a-z]+\.(fr|com|ci|yahoo|co)$/.test(inputMail)) || inputMail === "nodytic@gmail.com"} onClick={validerEmail} className="bg-light">Valider</Button>
                 </DialogActions>
             </Dialog>
         </div>
