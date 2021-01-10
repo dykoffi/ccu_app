@@ -10,31 +10,22 @@
     "url": "https://www.linkedin.com/in/edy-koffi-948494192/"
   },
   "dependencies": {
-    "@date-io/date-fns": "1.x",
-    "@material-ui/core": "^4.9.12",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.51",
-    "@material-ui/pickers": "^3.2.10",
     "@react-pdf/renderer": "^1.6.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
-    "date-fns": "^2.14.0",
     "express-favicon": "^2.0.1",
     "material-ui-dropzone": "^3.5.0",
-    "moment": "^2.24.0",
     "react": "^16.13.0",
     "react-cookie": "^3.1.2",
     "react-dom": "^16.13.0",
     "react-dropzone": "^11.0.2",
     "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.4",
     "react-virtual-list": "^2.3.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "socket.io-client": "^2.3.0"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "node ./production.js",
