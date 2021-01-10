@@ -14,8 +14,7 @@ deploy:
     host:
       - host: 160.120.185.111
         port: "2226"
-    ref: origin/master
-    repo: psante@192.168.16.211:/home/psante/Apps/test/rep/ccu/app
-    ssh_options: "StrictHostKeyChecking=no"
+    ref: origin/main
+    repo: git@github.com:dykoffi/ccu_app.git
     path: /home/psante/Apps/test/ccu/app
     post-deploy: yarn install ; yarn build ; pm2 startOrReload build.yaml ; pm2 save
