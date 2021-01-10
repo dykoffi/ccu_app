@@ -1,13 +1,8 @@
 apps:
   - name: ccu_app
-    script: serve
+    script: production.js
     instances: 3
     exec_mode: cluster
-    env:
-      PM2_SERVE_PATH: ./build
-      PM2_SERVE_PORT: 4001
-      PM2_SERVE_SPA: true
-      NODE_ENV: production
 deploy:
   production:
     user: psante

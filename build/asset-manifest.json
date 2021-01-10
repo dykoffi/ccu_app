@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "./build/static/css/main.12cd75b9.chunk.css",
+    "main.js": "./build/static/js/main.3d39be4d.chunk.js",
+    "main.js.map": "./build/static/js/main.3d39be4d.chunk.js.map",
+    "runtime-main.js": "./build/static/js/runtime-main.497050b6.js",
+    "runtime-main.js.map": "./build/static/js/runtime-main.497050b6.js.map",
+    "static/js/2.d445e33f.chunk.js": "./build/static/js/2.d445e33f.chunk.js",
+    "static/js/2.d445e33f.chunk.js.map": "./build/static/js/2.d445e33f.chunk.js.map",
+    "index.html": "./build/index.html",
+    "precache-manifest.a895f340803a240cf437562bec9098b6.js": "./build/precache-manifest.a895f340803a240cf437562bec9098b6.js",
+    "service-worker.js": "./build/service-worker.js",
+    "static/css/main.12cd75b9.chunk.css.map": "./build/static/css/main.12cd75b9.chunk.css.map",
+    "static/js/2.d445e33f.chunk.js.LICENSE.txt": "./build/static/js/2.d445e33f.chunk.js.LICENSE.txt",
+    "static/media/icones.css": "./build/static/media/Material-Design-Iconsd41d.2f198897.eot",
+    "static/media/npm2.png": "./build/static/media/npm2.53c5607b.png",
+    "static/media/phone.png": "./build/static/media/phone.3eb8f028.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.497050b6.js",
+    "static/js/2.d445e33f.chunk.js",
+    "static/css/main.12cd75b9.chunk.css",
+    "static/js/main.3d39be4d.chunk.js"
+  ]
+}
