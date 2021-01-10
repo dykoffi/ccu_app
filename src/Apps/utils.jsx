@@ -2,10 +2,10 @@ import React from 'react'
 import npmImg from '../static/npm2.png'
 import Upload from './upload'
 import Modal from './modal'
-// import z1 from '../static/z1.jpeg'
-// import z2 from '../static/z2.jpeg'
-// import z3 from '../static/z3.jpeg'
-// import z4 from '../static/z4.jpeg'
+import z1 from '../static/z1.jpeg'
+import z2 from '../static/z2.jpeg'
+import z3 from '../static/z3.jpeg'
+import z4 from '../static/z4.jpeg'
 
 const Waiting = () =>
     <div className="col-12">
@@ -15,14 +15,15 @@ const Waiting = () =>
         </b>
         </div>
         <ol id="utils">
-            {/* <li> <h2><i className="mdi-hardware-phone-android mr-3"></i> l'Application mobile </h2>
+            <li> <h2><i className="mdi-hardware-phone-android mr-3"></i> l'Application mobile </h2>
                 <p>
                     Modifiez directement et automatiquement vos contacts à l'aide de l'application ZEN
                 </p>
                 <ol>
-                    <li>Télécharger et installer l'application ZEN depuis le playstore</li>
+                    <li>Télécharger et installer l'application ZEN depuis <a href="https://zen.groupegeasscorp.com/telechargement" target="_blank" rel="noopener noreferrer">le site officiel</a></li>
                     <li>Inscrivez vous et soucrivez à un forfait</li>
-                    <li>Choisissez le mode automatique ou mauel pour la mise à jour de vos contacts</li>
+                    <li>Choisissez le mode automatique ou manuel pour la mise à jour de vos contacts</li>
+                    <li>Pour plus d'information rendez vous sur <a href="https://zen.groupegeasscorp.com/" target="_blank" rel="noopener noreferrer">ZEN</a></li>
                     <div className="row d-flex flex-row justify-content-around mt-3" id="zen">
                         <img className="mb-3" height={500} src={z1} alt="" />
                         <img className="mb-3" height={500} src={z3} alt="" />
@@ -30,7 +31,7 @@ const Waiting = () =>
                         <img className="mb-3" height={500} src={z4} alt="" />
                     </div>
                 </ol>
-            </li>*/}
+            </li>
             <li> <h2><i className="mdi-action-language mr-3"></i> l'Import de fichiers en ligne </h2>
                 <p>
                     Actualisez le contenu de tous vos documents (<code>.vcf, .csv, .zip</code>) qui contiennent des numeros ivoiriens. Les fichiers ZIP doivent contenir des fichiers <code>.vcf</code> ou <code>.csv</code> (les autres formats ne seront pas traités).

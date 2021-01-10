@@ -21,7 +21,7 @@ const Modal = ({ setMail, setLoading, email, loading }) => {
     };
 
     function validerEmail() {
-        if (/^[a-z0-9]+@[a-z]+\.(fr|com|ci|yahoo|co)$/.test(inputMail)) {
+        if (/^[a-z0-9]+@.+\.(fr|com|ci|yahoo|co)$/.test(inputMail)) {
             cookies.set("email", inputMail, { path: '/' })
             setMail(inputMail)
             setOpen(false)
@@ -81,7 +81,7 @@ const Modal = ({ setMail, setLoading, email, loading }) => {
                         }} >Supprimer</Button>
                     }
 
-                    <Button disabled={!(/^[a-z0-9]+@[a-z]+\.(fr|com|ci|yahoo|co)$/.test(inputMail)) || inputMail === "nodytic@gmail.com"} onClick={validerEmail} className="bg-light">Valider</Button>
+                    <Button disabled={!(/^[a-z0-9]+@.+\.(fr|com|ci|yahoo|co)$/.test(inputMail)) || inputMail === "nodytic@gmail.com"} onClick={validerEmail} className="bg-light">Valider</Button>
                 </DialogActions>
             </Dialog>
         </div>

@@ -14,7 +14,7 @@ const App = ({ email, info, setInformation }) => {
 
     function sendFiles(files) {
         setloading(true)
-        setInformation("Envoi en cours ...")
+        setInformation("Traitement en cours ...")
         Axios({
             onUploadProgress: function (progressEvent) {
                 let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
@@ -23,12 +23,12 @@ const App = ({ email, info, setInformation }) => {
             method: 'POST',
             url: `${header.url}/upload/${btoa(email)}`,
             data: files,
-            headers: { "content-type": "multipart/form-data", "x-filename": files }
+            headers: { "Bypass-Tunnel-Reminder":"","User-Agent":"", "content-type": "multipart/form-data", "x-filename": files }
         }).then(({ data }) => {
             setInformation(data)
             setTimeout(() => {
                 setInformation("")
-            }, 2500);
+            }, 5000);
         })
     }
     return (
