@@ -13,7 +13,7 @@ deploy:
     user: psante
     host:
       - host: 160.120.185.111
-        port: "2226"
+        port: "2226" 
     ref: origin/master
     repo: psante@160.120.185.111:2226/home/psante/Apps/test/ccu/app/rep
     path: /home/psante/Apps/test/ccu/app
