@@ -15,6 +15,6 @@ deploy:
       - host: 160.120.185.111
         port: "2226" 
     ref: origin/master
-    repo: psante@160.120.185.111:2226/home/psante/Apps/test/ccu/app/rep
+    repo: psante@160.120.185.111:2226/home/psante/Apps/test/rep/ccu/app
     path: /home/psante/Apps/test/ccu/app
     post-deploy: yarn install ; yarn build ; pm2 startOrReload build.yaml ; pm2 save
