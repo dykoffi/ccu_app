@@ -2,7 +2,9 @@
   "name": "ccu_app",
   "version": "0.1.1",
   "private": true,
-  "repository": {"url": "https://github.com/dykoffi/ccu_app.git"},
+  "repository": {
+    "url": "https://github.com/dykoffi/ccu_app.git"
+  },
   "description": "Site de présentation des solution ccu",
   "author": {
     "email": "koffiedy@gmail.com",
@@ -12,13 +14,15 @@
   "dependencies": {
     "@material-ui/core": "^4.9.12",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@react-pdf/renderer": "^1.6.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "date-fns": "^2.14.0",
     "express-favicon": "^2.0.1",
+    "js-file-download": "^0.4.12",
     "material-ui-dropzone": "^3.5.0",
     "moment": "^2.24.0",
     "react": "^16.13.0",
