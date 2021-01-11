@@ -23,7 +23,7 @@ const Message = ({ mes, open, close, w, r }) => {
         w ? <Snackbar open={open} onClose={close}>
             <Alert severity="info" > {mes}</Alert>
         </Snackbar > : <Snackbar autoHideDuration={2000} open={open} onClose={close}>
-                <Alert onClose={close} severity={ r ? "error" : "success"}>{mes}</Alert>
+                <Alert onClose={close} severity={r ? "error" : "success"}>{mes}</Alert>
             </Snackbar>
     )
 }
@@ -51,6 +51,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
     const [downloadW, setDownloadW] = useState(false)
     const [initOK, setInitOK] = useState(false)
     const [deleted, setDeleted] = useState(false)
+    const [serverW, setServerW] = useState(false)
 
     function sendFiles(files) {
         setDealW(true)
@@ -59,6 +60,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             method: 'POST',
             url: `${header.url}/upload`,
             data: files,
+            timeout: 30000,
             headers: { "Bypass-Tunnel-Reminder": "", "User-Agent": "", "content-type": "multipart/form-data", "IDsession": cookies.get('sessionID') }
         }).then(({ data }) => {
             setDealW(false)
@@ -67,9 +69,10 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             setlistfiles([...listfiles, ...data])
             cookies.set("files", [...listfiles, ...data], { path: '/', maxAge: 300000 })
             setFILES([...listfiles, ...data])
-            setTimeout(() => {
-                setInformation("")
-            }, 5000);
+        }).catch(() => {
+            setDealW(false)
+            setloading(false)
+            setServerW(true)
         })
     }
     function download(path, filename) {
@@ -78,6 +81,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
         Axios({
             method: 'GET',
             responseType: 'blob',
+            timeout: 30000,
             url: `${header.url}/download/${path}`,
             headers: { "Bypass-Tunnel-Reminder": "", "User-Agent": "", "content-type": "multipart/form-data" }
         }).then((res) => {
@@ -89,6 +93,10 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
                 fileDownload(res.data, filename);
             }
 
+        }).catch(() => {
+            setloading(false)
+            setDownloadW(false)
+            setServerW(true)
         })
     }
     function initSession() {
@@ -98,6 +106,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             method: 'GET',
             url: `${header.url}/initsession`,
             data: files,
+            timeout: 30000,
             headers: { "Bypass-Tunnel-Reminder": "", "User-Agent": "", "content-type": "multipart/form-data", "IDsession": cookies.get('sessionID') }
         }).then(() => {
             setloading(false)
@@ -107,6 +116,10 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             setlistfiles([])
             cookies.set("files", [], { path: '/', maxAge: 300000 })
             cookies.set("sessionID", crypto.randomBytes(64).toString('base64') + (new Date()).getTime(), { path: '/', maxAge: 300000 })
+        }).catch(() => {
+            setloading(false)
+            setInitW(false)
+            setServerW(true)
         })
     }
     return (
@@ -125,6 +138,12 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
                     return;
                 }
                 setDeleted(false)
+            }} />
+            <Message r open={serverW} mes={"Oups !!! Le serveur ne repond pas"} close={(even, reason) => {
+                if (reason === 'clickaway') {
+                    return;
+                }
+                setServerW(false)
             }} />
             <Message w open={downloadW} mes={"En attente du serveur ..."} close={(even, reason) => {
                 if (reason === 'clickaway') {
