@@ -67,7 +67,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             setDealOK(true)
             setloading(false)
             setlistfiles([...listfiles, ...data])
-            cookies.set("files", [...listfiles, ...data], { path: '/', maxAge: 300000 })
+            cookies.set("files", [...listfiles, ...data], { path: '/'})
             setFILES([...listfiles, ...data])
         }).catch(() => {
             setDealW(false)
@@ -88,7 +88,11 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             setDownloadW(false)
             setloading(false)
             if (res.status === 204) {
+                let files = listfiles.filter(file => file.path !== path)
                 setDeleted(true)
+                setFILES(files)
+                setlistfiles(files)
+                cookies.set("files", files, { path: '/', maxAge: 300000 })
             } else {
                 fileDownload(res.data, filename);
             }

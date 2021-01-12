@@ -8,6 +8,6 @@ export const header = { url: `https://ccuapi.loca.lt` };
 
 if (!cookies.get("sessionID")) {
     let sessionid = crypto.randomBytes(64).toString('base64') + (new Date()).getTime()
-    cookies.set("sessionID", sessionid, { path: '/', maxAge: 300000 })
+    cookies.set("sessionID", sessionid, { path: '/' })
     store.dispatch(setSESSIONID(sessionid))
 }
