@@ -4,8 +4,7 @@ import { setSESSIONID } from './redux'
 const host = window.location.hostname;
 const crypto = require('crypto')
 const cookies = new Cookies()
-export const header = { url: `https://ccuapi.loca.lt` };
-
+export const header = { url: `http://160.120.185.111:35000` };
 if (!cookies.get("sessionID")) {
     let sessionid = crypto.randomBytes(64).toString('base64') + (new Date()).getTime()
     cookies.set("sessionID", sessionid, { path: '/' })
