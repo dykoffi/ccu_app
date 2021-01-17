@@ -22,7 +22,7 @@ const Message = ({ mes, open, close, w, r }) => {
     return (
         w ? <Snackbar open={open} onClose={close}>
             <Alert severity="info" > {mes}</Alert>
-        </Snackbar > : <Snackbar autoHideDuration={2000} open={open} onClose={close}>
+        </Snackbar > : <Snackbar autoHideDuration={1500} open={open} onClose={close}>
                 <Alert onClose={close} severity={r ? "error" : "success"}>{mes}</Alert>
             </Snackbar>
     )
@@ -61,7 +61,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             url: `${header.url}/upload`,
             data: files,
             timeout: 30000,
-            headers: { "Bypass-Tunnel-Reminder": "", "User-Agent": "", "content-type": "multipart/form-data", "IDsession": cookies.get('sessionID') }
+            headers: {"content-type": "multipart/form-data", "IDsession": cookies.get('sessionID') }
         }).then(({ data }) => {
             setDealW(false)
             setDealOK(true)
@@ -112,7 +112,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             url: `${header.url}/initsession`,
             data: files,
             timeout: 30000,
-            headers: { "Bypass-Tunnel-Reminder": "", "User-Agent": "", "content-type": "multipart/form-data", "IDsession": cookies.get('sessionID') }
+            headers: { "content-type": "multipart/form-data", "IDsession": cookies.get('sessionID') }
         }).then(() => {
             setloading(false)
             setInitW(false)
