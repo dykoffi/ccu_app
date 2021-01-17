@@ -69,10 +69,11 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             setlistfiles([...listfiles, ...data])
             cookies.set("files", [...listfiles, ...data], { path: '/'})
             setFILES([...listfiles, ...data])
-        }).catch(() => {
+        }).catch((err) => {
             setDealW(false)
             setloading(false)
             setServerW(true)
+            alert(err)
         })
     }
     function download(path, filename) {
@@ -83,7 +84,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             responseType: 'blob',
             timeout: 30000,
             url: `${header.url}/download/${path}`,
-            headers: { "Bypass-Tunnel-Reminder": "", "User-Agent": "", "content-type": "multipart/form-data" }
+            headers: {"content-type": "multipart/form-data" }
         }).then((res) => {
             setDownloadW(false)
             setloading(false)
