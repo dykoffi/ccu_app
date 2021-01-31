@@ -1,10 +1,6 @@
 import React from 'react'
 import npmImg from '../static/npm2.png'
 import Upload from './upload'
-// import z1 from '../static/z1.jpeg'
-// import z2 from '../static/z2.jpeg'
-// import z3 from '../static/z3.jpeg'
-// import z4 from '../static/z4.jpeg'
 
 const Waiting = () =>
     <div className="col-12">
@@ -14,41 +10,25 @@ const Waiting = () =>
         </b>
         </div>
         <ol id="utils">
-            {/* <li> <h2><i className="mdi-hardware-phone-android mr-3"></i> l'Application mobile </h2>
-                <p>
-                    Modifiez directement et automatiquement vos contacts à l'aide de l'application ZEN
-                </p>
-                <ol>
-                    <li>Télécharger et installer l'application ZEN depuis <a href="https://zen.groupegeasscorp.com/telechargement" target="_blank" rel="noopener noreferrer">le site officiel</a></li>
-                    <li>Inscrivez vous et soucrivez à un forfait</li>
-                    <li>Choisissez le mode automatique ou manuel pour la mise à jour de vos contacts</li>
-                    <li>Pour plus d'information rendez vous sur <a href="https://zen.groupegeasscorp.com/" target="_blank" rel="noopener noreferrer">ZEN</a></li>
-                    <div className="row d-flex flex-row justify-content-around mt-3" id="zen">
-                        <img className="mb-3" height={500} src={z1} alt="" />
-                        <img className="mb-3" height={500} src={z3} alt="" />
-                        <img className="mb-3" height={500} src={z2} alt="" />
-                        <img className="mb-3" height={500} src={z4} alt="" />
-                    </div>
-                </ol>
-            </li> */}
             <li> <h2><i className="mdi-action-language mr-3"></i> l'Import de fichiers en ligne </h2>
                 <p>
-                    Actualisez le contenu de tous vos documents (<code>.vcf, .csv, .zip</code>) qui contiennent des numeros ivoiriens. Les fichiers ZIP doivent contenir des fichiers <code>.vcf</code> ou <code>.csv</code> (les autres formats ne seront pas traités).
+                    Actualisez le contenu de tous vos documents (<code>.vcf, .xlsx, .csv, .zip</code>) qui contiennent des numeros ivoiriens. Les fichiers ZIP doivent contenir des fichiers <code>.vcf, .xlsx</code> ou <code>.csv</code> (les autres formats ne seront pas traités).
                 </p>
                 <ol>
                     <li>Importez le fichier à partir du boutton ci-dessous</li>
                     <li>Téléchargez la version actualisée du fichier et actualisez votre système</li>
                     <li>Les fichiers <code>.csv</code> devront respecter le formatage suivant :
                         <ul>
-                            <li>Séparateur <code>;</code> ou <code>,</code></li>
+                            <li>Séparateur <code>(,)</code></li>
                             <li>Contenir une colonne (ou plusieurs) destinée(s) aux contacts (peu importe le nom de la colonne)</li>
-                            <li>Une cellule peut contenir plusieurs contacts séparés par un <code>/</code></li>
+                            <li>Une cellule peut contenir plusieurs contacts séparés par un slash <code>(/)</code></li>
                             <li>Être valide selon la règle de formatage des fichiers csv</li>
                         </ul>
                     </li>
+                    <p className="mt-3 green-text font-weight-bold">Par defaut, l'algorithme considère toutes les compositions numériques à huit chiffres (avec ou sans indicatif) comme des numéros ivoiriens, cochez la case ci-dessous pour ne traiter que les formats avec indicatif (pratique pour les pays étrangers).</p>
                     <Upload />
                 </ol>
-                <b className="text-danger">(Cette méthode nécessite la suppression des contacts existants afin d'éviter les doublons)</b>
+                <b className="text-danger">(Avant la mise à jour dans les systèmes téléphoniques, veuillez bien supprimer les anciens contacts afin d'éviter les doublons)</b>
             </li>
             <li> <h2><i className="mdi-action-polymer mr-3"></i> l'Outil CLI (ligne de commande LINUX/MAC/WINDOWS) </h2>
                 <p>
@@ -57,7 +37,7 @@ const Waiting = () =>
                 <ol>
                     <li>Téléchargez l'outil CLI à l'aide du gestionnaire de packages npm (<code>npm install -g ccu-cli</code>)</li>
                     <li>Entrez la commande <code>ccu-cli --help</code> ou rendez-vous sur <a href="https://www.npmjs.com/package/ccu-cli" target="_blank" rel="noopener noreferrer">npm</a> pour plus de details</li>
-                    <li>Prise en charge des base de données <code>Postgres, Mysql ,Sql Server, Sqlite, MongoDB</code> (dans la prochaine version)</li>
+                    <li>Prise en charge des base de données <code>Postgres, Mysql ,Sql Server, Oracle</code> (dans la prochaine version)</li>
                 </ol>
                 <b className="text-danger">(Cette méthode nécessite l'installation préalable de node js)</b>
             </li>

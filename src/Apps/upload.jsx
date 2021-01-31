@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from '@material-ui/core'
+import { Button, Checkbox, FormControlLabel } from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { useDropzone } from 'react-dropzone';
 import Axios from 'axios';
@@ -13,11 +13,9 @@ import fileDownload from 'js-file-download';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import crypto from 'crypto'
-
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-
 const Message = ({ mes, open, close, w, r }) => {
     return (
         w ? <Snackbar open={open} onClose={close}>
@@ -27,15 +25,15 @@ const Message = ({ mes, open, close, w, r }) => {
             </Snackbar>
     )
 }
-
 const Mask = () => <div id="masque"></div>
 const File = (props) => {
     return (
         <div className="col-auto m-1">
             <div style={{ cursor: 'pointer' }} onClick={props.download} className="file row d-flex px-2 bg-light rounded">
-                {extname(props.file) === ".vcf" && <i className="mdi-notification-event-note green-text"></i>}
+                {extname(props.file) === ".vcf" && <i className="mdi-notification-event-note blue-text"></i>}
                 {extname(props.file) === ".zip" && <i className="mdi-file-folder amber-text text-accent-4"></i>}
                 {extname(props.file) === ".csv" && <i className="mdi-navigation-menu"></i>}
+                {extname(props.file) === ".xlsx" && <i className="mdi-av-recent-actors green-text"></i>}
                 <span className="mx-2">{props.file}</span>
             </div>
         </div >)
@@ -52,7 +50,8 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
     const [initOK, setInitOK] = useState(false)
     const [deleted, setDeleted] = useState(false)
     const [serverW, setServerW] = useState(false)
-
+    const [rejeted, setRejeted] = useState(false)
+    const [indice, setIndice] = useState(false)
     function sendFiles(files) {
         setDealW(true)
         setloading(true)
@@ -61,19 +60,23 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             url: `${header.url}/upload`,
             data: files,
             timeout: 30000,
-            headers: {"content-type": "multipart/form-data", "IDsession": cookies.get('sessionID') }
-        }).then(({ data }) => {
-            setDealW(false)
-            setDealOK(true)
+            headers: { "Indice": indice ? "oui" : "non", "content-type": "multipart/form-data", "IDsession": cookies.get('sessionID') }
+        }).then(({ data, status }) => {
             setloading(false)
-            setlistfiles([...listfiles, ...data])
-            cookies.set("files", [...listfiles, ...data], { path: '/'})
-            setFILES([...listfiles, ...data])
+            setDealW(false)
+            if (status === 203) {
+                setRejeted(true)
+            } else {
+                let newData = [...listfiles, ...data.filter(elt => !listfiles.includes(elt))]
+                setDealOK(true)
+                setlistfiles(newData)
+                cookies.set("files", newData, { path: '/' })
+                setFILES(newData)
+            }
         }).catch((err) => {
             setDealW(false)
             setloading(false)
             setServerW(true)
-            alert(err)
         })
     }
     function download(path, filename) {
@@ -84,7 +87,7 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             responseType: 'blob',
             timeout: 30000,
             url: `${header.url}/download/${path}`,
-            headers: {"content-type": "multipart/form-data" }
+            headers: { "content-type": "multipart/form-data" }
         }).then((res) => {
             setDownloadW(false)
             setloading(false)
@@ -97,7 +100,6 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
             } else {
                 fileDownload(res.data, filename);
             }
-
         }).catch(() => {
             setloading(false)
             setDownloadW(false)
@@ -144,6 +146,12 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
                 }
                 setDeleted(false)
             }} />
+            <Message r open={rejeted} mes={"Oups !!! Format non pris en charge"} close={(even, reason) => {
+                if (reason === 'clickaway') {
+                    return;
+                }
+                setRejeted(false)
+            }} />
             <Message r open={serverW} mes={"Oups !!! Le serveur ne repond pas"} close={(even, reason) => {
                 if (reason === 'clickaway') {
                     return;
@@ -175,12 +183,25 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
                 }
                 setInitOK(false)
             }} />
+            <FormControlLabel
+                className="col-auto"
+                control={
+                    <Checkbox
+                        className="col-auto"
+                        checked={indice}
+                        size="medium"
+                        onChange={() => { setIndice(!indice) }}
+                        inputProps={{ 'aria-label': 'primary checkbox' }}
+                    />
+                }
+                label={<b>Ne modifier que les numeros avec indice <code>(+225, 00225)</code></b>}
+            />
             <div className="d-flex align-items-center mt-4">
-                <Button disabled={loading || !sessionid} {...getRootProps()} className="bg-light" startIcon={<CloudUploadIcon />} variant="contained" size="large">Importez vos fichiers (.csv, .vcf, .zip)
+                <Button disabled={loading || !sessionid} {...getRootProps()} className="bg-light" startIcon={<CloudUploadIcon />} variant="contained" size="large">Importez vos fichiers (.csv, .xlsx, .vcf, .zip)
             <input
                         {...getInputProps()}
                         className="col-12"
-                        accept=".csv, .vcf, .zip"
+                        accept=".csv, .vcf, .zip, .xlsx"
                         type="file"
                         name='fichier'
                         onChange={({ target: { files } }) => {
@@ -206,10 +227,9 @@ const App = ({ sessionid, info, files, setInformation, setFILES }) => {
                     </div>
                 </>
             }
-
             <div className="row d-flex flex-column">
-                <small className="blue-grey-text">Les fichiers sont automatiquement supprimés après 4min ou lors de la réinitialisation de la session</small>
-                <small>Écrivez nous (par mail : <a href="mailto:nodytic@gmail.com">nodytic@gmail.com</a> ) pour la prise en charge des fichiers spécifiques à votre entreprise.</small>
+                <small className="blue-grey-text">Les fichiers sont automatiquement supprimés après 1min ou lors de la réinitialisation de la session</small>
+                <small>Écrivez-nous (par mail : <a href="mailto:nodytic@gmail.com">nodytic@gmail.com</a> ) pour la prise en charge des fichiers spécifiques à votre entreprise.</small>
             </div>
         </div>
 

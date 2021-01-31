@@ -4,7 +4,7 @@ import { setSESSIONID } from './redux'
 const host = window.location.hostname;
 const crypto = require('crypto')
 const cookies = new Cookies()
-export const header = { url: `http://160.120.185.111:35000` };
+export const header = { url: `http://${host}:4001` };
 
 if (!cookies.get("sessionID")) {
     let sessionid = crypto.randomBytes(64).toString('base64') + (new Date()).getTime()
