@@ -1,7 +1,7 @@
 import { Cookies } from 'react-cookie'
 import store from './redux/store'
 import { setSESSIONID } from './redux'
-const host = window.location.hostname;
+const host = "160.120.185.111" //window.location.hostname;
 const crypto = require('crypto')
 const cookies = new Cookies()
 export const header = { url: `http://${host}:4001` };
