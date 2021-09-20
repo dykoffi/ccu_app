@@ -30,7 +30,7 @@ const Waiting = () =>
                 </ol>
                 <b className="text-danger">(Avant la mise à jour dans les systèmes téléphoniques, veuillez bien supprimer les anciens contacts afin d'éviter les doublons)</b>
             </li>
-            {/* <li> <h2><i className="mdi-action-polymer mr-3"></i> l'Outil CLI (ligne de commande LINUX/MAC/WINDOWS) </h2>
+            <li> <h2><i className="mdi-action-polymer mr-3"></i> l'Outil CLI (ligne de commande LINUX/MAC/WINDOWS) </h2>
                 <p>
                     Automatisez vos systèmes pour des mises à jour de masse (bases de données, annunaires téléphoniques, repertoires de masse ...).
                 </p>
@@ -41,7 +41,7 @@ const Waiting = () =>
                 </ol>
                 <b className="text-danger">(Cette méthode nécessite l'installation préalable de node js)</b>
             </li>
-            <img src={npmImg} className="col-12 border" alt="" /> */}
+            <img src={npmImg} className="col-12 border" alt="" />
 
         </ol>
     </div>
